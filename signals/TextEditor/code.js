@@ -12,14 +12,22 @@ let operations =
 
  var debug=true;
 
+function log(message) {
+    if (typeof message == 'object') {
+        logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
+    } else {
+        logger.innerHTML += message + '<br />';
+    }
+}
+
 function solution(operations) {
     let text = "", cursorStart = 0, cursorEnd = 0, clipboard = []; 
     
     for (let i=0;i<operations.length; i++) {
-        if (debug) console.log([operations[i], text, cursorStart, cursorEnd, clipboard]);
+        if (debug) log([operations[i], text, cursorStart, cursorEnd, clipboard]);
         [text, cursorStart, cursorEnd, clipboard] = runOperation(operations[i], text, cursorStart, cursorEnd, clipboard);
     }
-    console.log(text);
+    log(text);
     return text;
 }
 
