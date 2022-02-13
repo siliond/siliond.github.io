@@ -1,0 +1,88 @@
+<h2>Lexicographically Smaller</h2>
+<a href="../../index.html"><p style="text-align:right">Back to Index</p></a>
+<h3>Log:</h3>
+<div id="log"></div>
+<script type="text/javascript" src="../../scripts/logger.js"></script>
+<script type="text/javascript" src="code.js"></script>
+
+<h3>Problem:</h3>
+<div class="markdown -arial"><p>Given an array of integers <code>arr</code> and a positive integer <code>m</code>, your task is to find the frequency of the most common element within each <a href="keyword://contiguous-subarray" target="_blank">contiguous subarray</a> of length <code>m</code> in <code>arr</code>.</p>
+    <p>Return an array of these highest frequencies among subarray elements, ordered by their corresponding subarray's starting index. You can look at the examples section for a better understanding.</p>
+    <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Example</span></p>
+    <ul>
+    <li>
+    <p>For <code>arr = [1, 2]</code> and <code>m = 2</code>, the output should be <code>solution(arr, m) = [1]</code>.</p>
+    <p><img src="https://codesignal.s3.amazonaws.com/tasks/occurrencesInSubarrays/img/example1.gif?_tm=1624836352483" alt="example 1"></p>
+    <p><code>arr</code> contains only one contiguous subarray of length <code>m = 2</code> - <code>arr[0..1] = [1, 2]</code>. This subarray contains 2 most frequent elements - <code>1</code> and <code>2</code>, both having a frequency of <code>1</code>. So, the answer is <code>[1]</code>.</p>
+    </li>
+    <li>
+    <p>For <code>arr = [1, 3, 2, 2, 3]</code> and <code>m = 4</code>, the output should be <code>solution(arr, m) = [2, 2]</code>.</p>
+    <p><img src="https://codesignal.s3.amazonaws.com/tasks/occurrencesInSubarrays/img/example2.gif?_tm=1624836352799" alt="example 2"></p>
+    <p><code>arr</code> contains two contiguous subarrays of length <code>m = 4</code>:</p>
+    <ul>
+    <li><code>arr[0..3] = [1, 3, 2, 2]</code> contains only one most frequent element - <code>2</code>, and its frequency is <code>2</code>.</li>
+    <li><code>arr[1..4] = [3, 2, 2, 3]</code> contains two most frequent elements - <code>2</code> and <code>3</code>, both of them have a frequency of <code>2</code>.</li>
+    <li>Putting the answers for both subarrays together, we obtain the array <code>[2, 2]</code></li>
+    </ul>
+    </li>
+    <li>
+    <p>For <code>arr = [2, 1, 2, 3, 3, 2, 2, 2, 2, 1]</code> and <code>m = 3</code>, the output should be <code>solution(arr, m) = [2, 1, 2, 2, 2, 3, 3, 2]</code>.</p>
+    <p><img src="https://codesignal.s3.amazonaws.com/tasks/occurrencesInSubarrays/img/example3.gif?_tm=1624836354156" alt="example 3"></p>
+    <p><code>arr</code> contains <code>8</code> contiguous subarrays of length <code>m = 3</code>:</p>
+    <ul>
+    <li><code>arr[0..2] = [2, 1, 2]</code> contains only one most frequent element - <code>2</code>, and its frequency is <code>2</code>.</li>
+    <li><code>arr[1..3] = [1, 2, 3]</code> contains three most frequent elements - <code>1</code>, <code>2</code>, and <code>3</code>. All of them have frequency <code>1</code>.</li>
+    <li><code>arr[2..4] = [2, 3, 3]</code> contains only one most frequent element - <code>3</code>, and its frequency is <code>2</code>.</li>
+    <li><code>arr[3..5] = [3, 3, 2]</code> contains only one most frequent element - <code>3</code>, and its frequency is <code>2</code>.</li>
+    <li><code>arr[4..6] = [3, 2, 2]</code> contains only one most frequent element - <code>2</code>, and its frequency is <code>2</code>.</li>
+    <li><code>arr[5..7] = [2, 2, 2]</code> contains only one most frequent element - <code>2</code>, and its frequency is <code>3</code>.</li>
+    <li><code>arr[6..8] = [2, 2, 2]</code> contains only one most frequent element - <code>2</code>, and its frequency is <code>3</code>.</li>
+    <li><code>arr[7..9] = [2, 2, 1]</code> contains only one most frequent element - <code>1</code>, and its frequency is <code>2</code>.</li>
+    <li>Putting the answers for both subarrays together, we obtain the array <code>[2, 1, 2, 2, 2, 3, 3, 2]</code>.</li>
+    </ul>
+    </li>
+    </ul>
+    <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Input/Output</span></p>
+    <ul>
+    <li>
+    <p><strong>[execution time limit] 4 seconds (js)</strong></p>
+    </li>
+    <li>
+    <p><strong>[input] array.integer arr</strong></p>
+    <p>An array of integers.</p>
+    <p><em>Guaranteed constraints:</em><br>
+    <code>2 ≤ arr.length ≤ 10<sup>5</sup></code>,<br>
+    <code>-10<sup>9</sup> ≤ arr[i] ≤ 10<sup>9</sup></code>.</p>
+    </li>
+    <li>
+    <p><strong>[input] integer m</strong></p>
+    <p>An integer representing the length of each subarray.</p>
+    <p><em>Guaranteed constraints:</em><br>
+    <code>2 ≤ m ≤ arr.length</code>.</p>
+    </li>
+    <li>
+    <p><strong>[output] array.integer</strong></p>
+    <p>An array of the highest frequencies in each contiguous subarray of length <code>m</code> in <code>arr</code>.</p>
+    </li>
+    </ul>
+    <p><strong>[JavaScript] Syntax Tips</strong></p>
+    <pre><code class="language-javascript"><span class="hljs-comment">// Prints help message to the console</span>
+    <span class="hljs-comment">// Returns a string</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span>(<span class="hljs-params">name</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"This prints to the console when you Run Tests"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, "</span> + name;
+    }
+    
+    </code></pre>
+    </div>
+
+    <div class="modal--content -layout-v" role="tab" tabindex="0"><div class="modal--header -layout-h"><div class="-layout-v -flex"><div class="-font-size-24 -line-height-28 -light -black -align-center -no-transform">Contiguous Subarray</div></div><div class="modal--close-button"><div role="button" class="button -type-black -view-flat -shape-circle" tabindex="0"><div class="button--content -layout-h -center-center -space-h-8"><div class="icon -size-24"><div class="-layout-h -center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg></div></div></div></div></div></div><div class="modal--body -padding-h-24 -padding-b-24"><div><div class="-padding-24"><div class="markdown"><p>An array made up of adjacent elements from another array.</p>
+        <p>For example, consider <code>arr = [2, 3, 7]</code>:</p>
+        <ul>
+        <li><code>[3, 7]</code> is a contiguous subarray of <code>arr</code></li>
+        <li><code>[2, 3, 7]</code> is a contiguous subarray of <code>arr</code></li>
+        <li><code>[7]</code> is a contiguous subarray of <code>arr</code></li>
+        <li><code>[1, 2, 3]</code> is <strong>not</strong> a contiguous subarray because it contains elements not in <code>arr</code></li>
+        <li><code>[2, 7]</code> is <strong>not</strong> a contiguous subarray because the elements aren't adjacent in <code>arr</code></li>
+        </ul>
+        </div></div></div></div></div>
