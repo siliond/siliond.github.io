@@ -5,7 +5,7 @@ function solution(arr) {
         done = true;
 
         for (let j = 0; j < arr.length; j++) {
-            if (arr[j].length > i)
+            if (arr[j].length > i) {
                 result+=arr[j][i];
                 done = false;
             }
