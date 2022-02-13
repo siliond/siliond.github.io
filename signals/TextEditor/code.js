@@ -12,16 +12,6 @@ let operations =
 
  var debug=true;
 
-function log(message) {
-    let logger = document.getElementById('log');
-
-    if (typeof message == 'object') {
-        logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
-    } else {
-        logger.innerHTML += message + '<br />';
-    }
-}
-
 function solution(operations) {
     let text = "", cursorStart = 0, cursorEnd = 0, clipboard = []; 
     
