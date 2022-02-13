@@ -12,7 +12,5 @@ function solution(arr) {
         }
     }
 
-    log(result);
-
     return result;
 }
