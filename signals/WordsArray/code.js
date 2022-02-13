@@ -16,16 +16,3 @@ function solution(arr) {
 
     return result;
 }
- 
-log(`Input:
-arr:
-["Daisy", 
- "Rose", 
- "Hyacinth", 
- "Poppy"]
-Expected Output:
-"DRHPaoyoisapsecpyiynth"`)
-solution (["Daisy", 
-"Rose", 
-"Hyacinth", 
-"Poppy"]);
