@@ -1,5 +1,20 @@
 function solution(arr) {
+    let result = "", done=false;
 
+    for (let i = 0; !done&&i <= 100; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j].length <= i)
+                done = true;
+            else {
+                result+=arr[j][i];
+                done = false;
+            }
+        }
+    }
+
+    log(result);
+
+    return result;
 }
  
 log(`Input:
@@ -10,4 +25,7 @@ arr:
  "Poppy"]
 Expected Output:
 "DRHPaoyoisapsecpyiynth"`)
-solution ("ab12c", "1zz456");
+solution (["Daisy", 
+"Rose", 
+"Hyacinth", 
+"Poppy"]);
