@@ -6,6 +6,8 @@ function solution(arr, m) {
 
         frequencies.push(getMostFrequent(sub));
     }
+
+    return frequencies;
 }
 
 function getMostFrequent(sub) {
