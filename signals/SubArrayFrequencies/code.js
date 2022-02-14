@@ -19,7 +19,7 @@ function getMostFrequent(sub) {
         
         if(map[number] == null)
             map[number] = 1;
-        numberse
+        else
             map[number]++;  
 
         if(map[number] > maxFrequency)
