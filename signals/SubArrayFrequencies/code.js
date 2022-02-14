@@ -2,7 +2,7 @@ function solution(arr, m) {
     let frequencies = [];
 
     for (let i=0; i<arr.length-m+1; i++) {
-        let sub = arr.slice(i, i+m-1);
+        let sub = arr.slice(i, i+m);
 
         frequencies.push(getMostFrequent(sub));
     }
