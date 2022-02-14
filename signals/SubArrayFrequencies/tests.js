@@ -4,6 +4,6 @@ describe("SubArray Frequencies suite", function() {
     m: 2
     Expected Output:
     [1]`, function() {
-      expect(solution ([1, 2], 2)).toBe([1]);
+      expect(solution ([1, 2], 2)).toEqual([1]);
     });
   });
