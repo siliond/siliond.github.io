@@ -27,23 +27,45 @@ function solution(cntProducts, quantities, costs, meals) {
     );
 
     for (let i = 0; i < meals.length; i++) {
+        let mealMinCost = Number.MAX_SAFE_INTEGER;
         let quantities = meals[i];
 
-        for (let k = 0; k < cntProducts; k++) {
-            let productStore0 = storeCombos[0].Products[k];
-            let productStore1 = storeCombos[1].Products[k];
+        for (let j = 0; j < storeCombos.length; j++) {
+            let storeCombo = storeCombos[j];
+            let mealCost = 0;
 
-            if (productStore0.Cost > productStore1.Cost) {
+            for (let k = 0; k < cntProducts; k++) {
+                let quantity = quantities[k];
 
+                let prodCost = getProdCost(storeCombo, k, quantity);
+
+                mealCost += prodCost;
+            }
+
+            if (mealCost < mealMinCost) {
+                mealMinCost = mealCost;
             }
         }
 
-        for (let j = 0; j < storeCombos.length; j++) {
-            let store = storeCombos[j];
-
-
-        }
+        mealMinCosts.push(mealMinCost);
     }
 
     return mealMinCosts;
+}
+
+function getProdCost(storeCombo, noProduct, quantity) {
+    let prodCost = Number.MAX_SAFE_INTEGER;
+
+    let firstStore = storeCombo[0].Products[noProduct].Cost > storeCombo[1].Products[noProduct].Cost ? 1 : 0;
+
+    if (quantity > storeCombo[firstStore].Products[noProduct].Quantity) {
+        if (quantity <= storeCombo[firstStore].Products[noProduct].Quantity + storeCombo[1 - firstStore].Products[noProduct].Quantity)
+            prodCost =
+            storeCombo[firstStore].Products[noProduct].Quantity * storeCombo[firstStore].Products[noProduct].Cost +
+            (quantity - storeCombo[firstStore].Products[noProduct].Quantity) * storeCombo[1 - firstStore].Products[noProduct].Cost;
+    } else {
+        prodCost = quantity * storeCombo[firstStore].Products[noProduct].Cost;
+    }
+
+    return prodCost;
 }
