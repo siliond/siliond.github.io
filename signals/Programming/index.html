@@ -1,0 +1,100 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="../../scripts/jasmine/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="../../style/signals.css">
+
+    <script type="text/javascript" src="../../scripts/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/jasmine-html.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/boot0.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/boot1.js"></script>
+
+    <script type="text/javascript" src="code.js"></script>
+    <script type="text/javascript" src="tests.js"></script>
+</head>
+
+<body>
+    <h2>Minesweeper</h2>
+    <a href="../../index.html">
+        <p style="text-align:right">Back to Index</p>
+    </a>
+
+    <button type="button" class="collapsible">Problem:</button>
+    <div class="content">
+        <div class="markdown -arial">
+            <p>You've created a new programming language, and now you've decided to add hashmap support to it. Actually you are quite disappointed that in common programming languages it's impossible to add a number to all hashmap keys, or all its values.
+                So you've decided to take matters into your own hands and implement your own hashmap in your new language that has the following operations:</p>
+            <ul>
+                <li><code>insert x y</code> - insert an object with key <code>x</code> and value <code>y</code>.</li>
+                <li><code>get x</code> - return the value of an object with key <code>x</code>.</li>
+                <li><code>addToKey x</code> - add <code>x</code> to all keys in map.</li>
+                <li><code>addToValue y</code> - add <code>y</code> to all values in map.</li>
+            </ul>
+            <p>To test out your new hashmap, you have a list of queries in the form of two arrays: <code>queryTypes</code> contains the names of the methods to be called (eg: <code>insert</code>, <code>get</code>, etc), and <code>queries</code> contains
+                the arguments for those methods (the <code>x</code> and <code>y</code> values).</p>
+            <p>Your task is to implement this hashmap, apply the given queries, and to find the <strong>sum</strong> of all the results for <code>get</code> operations.</p>
+            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Example</span></p>
+            <ul>
+                <li>
+                    <p>For <code>queryType = ["insert", "insert", "addToValue", "addToKey", "get"]</code> and <code>query = [[1, 2], [2, 3], [2], [1], [3]]</code>, the output should be <code>solution(queryType, query) = 5</code>.</p>
+                    <p>The hashmap looks like this after each query:</p>
+                    <ul>
+                        <li>1 query: {1: 2}</li>
+                        <li>2 query: {1: 2, 2: 3}</li>
+                        <li>3 query: {1: 4, 2: 5}</li>
+                        <li>4 query: {2: 4, 3: 5}</li>
+                        <li>5 query: answer is <code>5</code></li>
+                    </ul>
+                    <p>The result of the last <code>get</code> query for <code>3</code> is <code>5</code> in the resulting hashmap.</p>
+                    <p><img src="https://codesignal.s3.amazonaws.com/tasks/hashMap/img/example1.jpg?_tm=1624860113752" alt=""></p>
+                </li>
+                <li>
+                    <p>For <code>queryType = ["insert", "addToValue", "get", "insert", "addToKey", "addToValue", "get"]</code> and <code>query = [[1, 2], [2], [1], [2, 3], [1], [-1], [3]]</code>, the output should be <code>solution(queryType, query) = 6</code>.</p>
+                    <p>The hashmap looks like this after each query:</p>
+                    <ul>
+                        <li>1 query: {1: 2}</li>
+                        <li>2 query: {1: 4}</li>
+                        <li>3 query: answer is <code>4</code></li>
+                        <li>4 query: {1: 4, 2: 3}</li>
+                        <li>5 query: {2: 4, 3: 3}</li>
+                        <li>6 query: {2: 3, 3: 2}</li>
+                        <li>7 query: answer is <code>2</code></li>
+                    </ul>
+                    <p>The sum of the results for all the <code>get</code> queries is equal to <code>4 + 2 = 6</code>.</p>
+                </li>
+            </ul>
+            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Input/Output</span></p>
+            <ul>
+                <li>
+                    <p><strong>[execution time limit] 4 seconds (js)</strong></p>
+                </li>
+                <li>
+                    <p><strong>[input] array.string queryType</strong></p>
+                    <p>Array of query types. It is guaranteed that each <code>queryType[i]</code> is either <code>"addToKey"</code>, <code>"addToValue"</code>, <code>"get"</code>, or <code>"insert"</code>.</p>
+                    <p><em>Guaranteed constraints:</em><br>
+                        <code>1 ≤ queryType.length ≤ 10<sup>5</sup></code>.</p>
+                </li>
+                <li>
+                    <p><strong>[input] array.array.integer query</strong></p>
+                    <p>Array of queries, where each query is represented either by two numbers for <code>insert</code> query or by one number for other queries. It is guaranteed that during all queries all keys and values are in the range <code>[-10<sup>9</sup>, 10<sup>9</sup>]</code>.</p>
+                    <p><em>Guaranteed constraints:</em><br>
+                        <code>query.length = queryType.length</code>,<br>
+                        <code>1 ≤ query[i].length ≤ 2</code>.</p>
+                </li>
+                <li>
+                    <p><strong>[output] integer64</strong></p>
+                    <p>The sum of the results for all <code>get</code> queries.</p>
+                </li>
+            </ul>
+            <p><strong>[JavaScript] Syntax Tips</strong></p>
+            <pre><code class="language-javascript"><span class="hljs-comment">// Prints help message to the console</span>
+            <span class="hljs-comment">// Returns a string</span>
+            <span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span>(<span class="hljs-params">name</span>) {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"This prints to the console when you Run Tests"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, "</span> + name;
+            }
+            
+            </code></pre>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../scripts/signals.js"></script>
+</body>
