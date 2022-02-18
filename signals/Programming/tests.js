@@ -1,81 +1,81 @@
 describe("Minesweeper suite", function() {
-    it(`Input:
-    queryType:
-    ["insert", 
-     "insert", 
-     "addToValue", 
-     "addToKey", 
-     "get"]
-    query:
-    [[1,2], 
-     [2,3], 
-     [2], 
-     [1], 
-     [3]]
-    Expected Output:
-    5`, function() {
-        expect(solution(["insert",
-            "insert",
-            "addToValue",
-            "addToKey",
-            "get"
-        ], [
-            [1, 2],
-            [2, 3],
-            [2],
-            [1],
-            [3]
-        ])).toEqual(5);
-    });
+    // it(`Input:
+    // queryType:
+    // ["insert", 
+    //  "insert", 
+    //  "addToValue", 
+    //  "addToKey", 
+    //  "get"]
+    // query:
+    // [[1,2], 
+    //  [2,3], 
+    //  [2], 
+    //  [1], 
+    //  [3]]
+    // Expected Output:
+    // 5`, function() {
+    //     expect(solution(["insert",
+    //         "insert",
+    //         "addToValue",
+    //         "addToKey",
+    //         "get"
+    //     ], [
+    //         [1, 2],
+    //         [2, 3],
+    //         [2],
+    //         [1],
+    //         [3]
+    //     ])).toEqual(5);
+    // });
 
-    it(`Input:
-    queryType:
-    ["addToKey", 
-     "addToKey", 
-     "insert", 
-     "addToValue", 
-     "addToValue", 
-     "get", 
-     "addToKey", 
-     "insert", 
-     "addToKey", 
-     "addToValue"]
-    query:
-    [[-3], 
-     [-1], 
-     [0,-3], 
-     [3], 
-     [-1], 
-     [0], 
-     [-1], 
-     [-4,-5], 
-     [-1], 
-     [-4]]
-    Expected Output:
-    -1`, function() {
-        expect(solution(["addToKey",
-            "addToKey",
-            "insert",
-            "addToValue",
-            "addToValue",
-            "get",
-            "addToKey",
-            "insert",
-            "addToKey",
-            "addToValue"
-        ], [
-            [-3],
-            [-1],
-            [0, -3],
-            [3],
-            [-1],
-            [0],
-            [-1],
-            [-4, -5],
-            [-1],
-            [-4]
-        ])).toEqual(-1);
-    });
+    // it(`Input:
+    // queryType:
+    // ["addToKey", 
+    //  "addToKey", 
+    //  "insert", 
+    //  "addToValue", 
+    //  "addToValue", 
+    //  "get", 
+    //  "addToKey", 
+    //  "insert", 
+    //  "addToKey", 
+    //  "addToValue"]
+    // query:
+    // [[-3], 
+    //  [-1], 
+    //  [0,-3], 
+    //  [3], 
+    //  [-1], 
+    //  [0], 
+    //  [-1], 
+    //  [-4,-5], 
+    //  [-1], 
+    //  [-4]]
+    // Expected Output:
+    // -1`, function() {
+    //     expect(solution(["addToKey",
+    //         "addToKey",
+    //         "insert",
+    //         "addToValue",
+    //         "addToValue",
+    //         "get",
+    //         "addToKey",
+    //         "insert",
+    //         "addToKey",
+    //         "addToValue"
+    //     ], [
+    //         [-3],
+    //         [-1],
+    //         [0, -3],
+    //         [3],
+    //         [-1],
+    //         [0],
+    //         [-1],
+    //         [-4, -5],
+    //         [-1],
+    //         [-4]
+    //     ])).toEqual(-1);
+    // });
 
     it(`Input:
     queryType:
@@ -205,12 +205,102 @@ describe("Minesweeper suite", function() {
     Expected Output:
     1069`, function() {
         expect(solution(["addToKey",
+            "addToValue",
+            "insert",
+            "addToValue",
             "addToKey",
+            "get",
             "insert",
             "addToValue",
             "addToValue",
             "get",
+            "insert",
             "addToKey",
+            "get",
+            "addToKey",
+            "addToKey",
+            "addToValue",
+            "insert",
+            "addToValue",
+            "get",
+            "addToKey",
+            "addToKey",
+            "insert",
+            "addToValue",
+            "addToKey",
+            "addToValue",
+            "insert",
+            "get",
+            "addToKey",
+            "addToValue",
+            "get",
+            "get",
+            "get",
+            "addToValue",
+            "addToValue",
+            "get",
+            "get",
+            "insert",
+            "insert",
+            "addToKey",
+            "insert",
+            "addToValue",
+            "addToValue",
+            "addToKey",
+            "addToValue",
+            "addToValue",
+            "get",
+            "addToValue",
+            "addToKey",
+            "get",
+            "addToValue",
+            "insert",
+            "get",
+            "get",
+            "get",
+            "addToValue",
+            "addToValue",
+            "get",
+            "addToKey",
+            "get",
+            "addToKey",
+            "addToValue",
+            "get",
+            "get",
+            "addToKey",
+            "insert",
+            "addToKey",
+            "get",
+            "addToKey",
+            "addToValue",
+            "addToKey",
+            "insert",
+            "addToKey",
+            "addToValue",
+            "addToKey",
+            "addToValue",
+            "addToValue",
+            "get",
+            "get",
+            "addToKey",
+            "insert",
+            "get",
+            "get",
+            "addToKey",
+            "insert",
+            "addToKey",
+            "addToValue",
+            "addToKey",
+            "insert",
+            "addToValue",
+            "get",
+            "get",
+            "insert",
+            "get",
+            "get",
+            "addToValue",
+            "get",
+            "addToValue",
             "insert",
             "addToKey",
             "addToValue"

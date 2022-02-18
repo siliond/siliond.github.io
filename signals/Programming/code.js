@@ -1,5 +1,5 @@
 function solution(queryType, query) {
-    let result = {};
+    let result = new Map();
     let final = [];
     let addToKey = 0;
 
@@ -26,7 +26,6 @@ function solution(queryType, query) {
                 }
                 break;
         }
-
         console.log(result, addToKey);
     }
     console.log(final);
