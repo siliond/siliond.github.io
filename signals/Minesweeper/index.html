@@ -1,0 +1,112 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="../../scripts/jasmine/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="../../style/signals.css">
+
+    <script type="text/javascript" src="../../scripts/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/jasmine-html.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/boot0.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/boot1.js"></script>
+
+    <script type="text/javascript" src="code.js"></script>
+    <script type="text/javascript" src="tests.js"></script>
+</head>
+
+<body>
+    <h2>Minesweeper</h2>
+    <a href="../../index.html">
+        <p style="text-align:right">Back to Index</p>
+    </a>
+
+    <button type="button" class="collapsible">Problem:</button>
+    <div class="content">
+        <div class="markdown -arial">
+            <p>Minesweeper is a popular single-player computer game. The goal is to locate mines within a rectangular grid of cells. At the start of the game, all of the cells are concealed. On each turn, the player clicks on a blank cell to reveal its contents,
+                leading to the following result:</p>
+            <ul>
+                <li>If there's a mine on this cell, the player loses and the game is over;</li>
+                <li>Otherwise, a number appears on the cell, representing how many mines there are within the 8 neighbouring cells (up, down, left, right, and the 4 diagonal directions);</li>
+                <li>If the revealed number is <code>0</code>, each of the 8 neighbouring cells are automatically revealed in the same way.</li>
+            </ul>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/minesweeperClick/img/minesweeper1.gif?_tm=1636920998455" alt="demonstration"></p>
+            <p>You are given a boolean matrix <code>field</code> representing the distribution of bombs in the rectangular field. You are also given integers <code>x</code> and <code>y</code>, representing the coordinates of the player's first clicked cell
+                - <code>x</code> represents the row index, and <code>y</code> represents the column index, both of which are <code>0</code>-based.</p>
+            <p>Your task is to return an integer matrix of the same dimensions as <code>field</code>, representing the resulting field after applying this click. If a cell remains concealed, the corresponding element should have a value of <code>-1</code>.</p>
+            <p><strong>It is guaranteed that the clicked cell does not contain a mine.</strong></p>
+            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Example</span></p>
+            <ul>
+                <li>For</li>
+            </ul>
+            <pre><code>field = [[false, true, true],
+                     [true, false, true],
+                     [false, false, true]]
+            </code></pre>
+            <p><code>x = 1</code>, and <code>y = 1</code>, the output should be</p>
+            <pre><code>solution(field, x, y) = [[-1, -1, -1],
+                                             [-1, 5, -1],
+                                             [-1, -1, -1]]
+            </code></pre>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/minesweeperClick/img/example1.gif?_tm=1636920998863" alt="example"></p>
+            <p>There are <code>5</code> neighbors of the cell <code>(1, 1)</code> which contain a mine, so the value in <code>(1, 1)</code> should become <code>5</code>, and the other elements of the resulting matrix should be <code>-1</code> since no other
+                cell would be expanded.</p>
+            <ul>
+                <li>For</li>
+            </ul>
+            <pre><code>field = [[true, false, true, true, false],
+                     [true, false, false, false, false],
+                     [false, false, false, false, false],
+                     [true, false, false, false, false]]
+            </code></pre>
+            <p><code>x = 3</code>, and <code>y = 2</code>, the output should be</p>
+            <pre><code>solution(field, x, y) = [[-1, -1, -1, -1, -1],
+                                             [-1, 3, 2, 2, 1],
+                                             [-1, 2, 0, 0, 0],
+                                             [-1, 1, 0, 0, 0]]
+            </code></pre>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/minesweeperClick/img/example2b.gif?_tm=1636920999230" alt="example"></p>
+            <p>Since the value in the cell <code>(3, 2)</code> is <code>0</code>, all of its neighboring cells (<code>(2, 1)</code>, <code>(2, 2)</code>, <code>(2, 3)</code>, <code>(3, 1)</code>, and <code>(3, 3)</code>) are also revealed. Since the value
+                in the cell <code>(2, 2)</code> is also <code>0</code>, its neighbouring cells <code>(1, 1)</code>, <code>(1, 2)</code> and <code>(1, 3)</code> are revealed, and since the value in cell <code>(2, 3)</code> is <code>0</code>, its neighbours
+                <code>(1, 4)</code>, <code>(2, 4)</code>, and <code>(3, 4)</code> are also revealed. The cells <code>(3, 3)</code>, <code>(2, 4)</code>, and <code>(3, 4)</code> also contain the value <code>0</code>, but since all of their neighbours have
+                already been revealed, no further action is required.</p>
+            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Input/Output</span></p>
+            <ul>
+                <li>
+                    <p><strong>[execution time limit] 4 seconds (js)</strong></p>
+                </li>
+                <li>
+                    <p><strong>[input] array.array.boolean field</strong></p>
+                    <p>A rectangular matrix representing the locations of the mines in the game field.</p>
+                    <p><em>Guaranteed constraints:</em><br>
+                        <code>2 ≤ field.length ≤ 100</code>,<br>
+                        <code>2 ≤ field[i].length ≤ 100</code>.</p>
+                </li>
+                <li>
+                    <p><strong>[input] integer x</strong></p>
+                    <p>The row number of the cell which is clicked (<code>0</code>-based).</p>
+                    <p><em>Guaranteed constraints:</em><br>
+                        <code>0 ≤ x &lt; field.length</code>.</p>
+                </li>
+                <li>
+                    <p><strong>[input] integer y</strong></p>
+                    <p>The column number of the cell which is clicked (<code>0</code>-based).</p>
+                    <p><em>Guaranteed constraints:</em><br>
+                        <code> 0 ≤ y &lt; field[0].length</code>.</p>
+                </li>
+                <li>
+                    <p><strong>[output] array.array.integer</strong></p>
+                    <p>The expanded matrix after the click.</p>
+                </li>
+            </ul>
+            <p><strong>[JavaScript] Syntax Tips</strong></p>
+            <pre><code class="language-javascript"><span class="hljs-comment">// Prints help message to the console</span>
+            <span class="hljs-comment">// Returns a string</span>
+            <span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span>(<span class="hljs-params">name</span>) {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"This prints to the console when you Run Tests"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, "</span> + name;
+            }
+            
+            </code></pre>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../scripts/signals.js"></script>
+</body>
