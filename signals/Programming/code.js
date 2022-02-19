@@ -34,7 +34,7 @@ function solution(queryType, query) {
         console.log(
             `op: ${op}
             params: ${params}
-            result: ${result}
+            result: ${JSON. stringify(result)}
             final: ${final}
             addToKey: ${addToKey}`);
     }
