@@ -1,5 +1,5 @@
 function solution(queryType, query) {
-    let result = new Map();
+    let result = {};
     let final = [];
     let addToKey = 0;
 
@@ -19,8 +19,8 @@ function solution(queryType, query) {
                 // if (Object.keys(result).length > 0)
                 //     addToKey += params[0];
                 for (const [key, value] of Object.entries(result)) {
-                    result[key+params[0]] = value;
-                    result.delete(key);
+                    result[parseInt(key)+params[0]] = value;
+                    delete result[key];
                 }
                 break;
 
