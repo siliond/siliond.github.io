@@ -1,4 +1,5 @@
-describe("Minesweeper suite", function() {
+describe("Programming suite", function() {
+    /*
     it(`Input:
     queryType:
     ["insert", 
@@ -76,7 +77,7 @@ describe("Minesweeper suite", function() {
             [-4]
         ])).toEqual(-1);
     });
-
+*/
     it(`Input:
     queryType:
     ["addToKey", 
