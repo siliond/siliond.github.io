@@ -4,7 +4,7 @@ function solution(queryType, query) {
     let addToKey = 0;
 
     for (let i = 0; i < queryType.length; i++) {
-        let [op, params] = [queryType[i], query[i]];
+        const [op, params] = [queryType[i], query[i]];
 
         switch (op) {
             case "insert":
