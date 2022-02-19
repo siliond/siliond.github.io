@@ -19,7 +19,7 @@ function solution(queryType, query) {
                 // if (Object.keys(result).length > 0)
                 //     addToKey += params[0];
                 for (const prop in result) {
-                    result[params[0]+prop] = result[prop];
+                    result[parseInt(prop) + params[0]] = result[prop];
                     result.delete(prop);
                 }
                 break;
