@@ -31,7 +31,12 @@ function solution(queryType, query) {
                 break;
         }
 
-        console.log(result, addToKey);
+        console.log(
+            `op: ${op}
+            params: ${params}
+            result: ${result}
+            final: ${final}
+            addToKey: ${addToKey}`);
     }
     console.log(final);
     return final.reduce((prev, curr) => prev + curr, 0);
