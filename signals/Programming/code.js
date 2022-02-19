@@ -18,9 +18,9 @@ function solution(queryType, query) {
             case "addToKey":
                 // if (Object.keys(result).length > 0)
                 //     addToKey += params[0];
-                for (const prop in result) {
-                    result[parseInt(prop) + params[0]] = result[prop];
-                    result.delete(prop);
+                for (const [key, value] of Object.entries(result)) {
+                    result[key+params[0]] = value;
+                    result.delete(key);
                 }
                 break;
 
@@ -30,7 +30,8 @@ function solution(queryType, query) {
                 }
                 break;
         }
-if (i<10)
+
+        if (i<10)
         console.log(
             `op: ${op}
             params: ${params}
