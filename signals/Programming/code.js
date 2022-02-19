@@ -18,9 +18,9 @@ function solution(queryType, query) {
             case "addToKey":
                 // if (Object.keys(result).length > 0)
                 //     addToKey += params[0];
-                for (const [key, value] of result.entries()) {
-                    result[key+params[0]] = value;
-                    result.delete(key);
+                for (const prop in result) {
+                    result[prop+params[0]] = result[prop];
+                    result.delete(prop);
                 }
                 break;
 
