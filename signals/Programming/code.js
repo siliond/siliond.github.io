@@ -30,7 +30,7 @@ function solution(queryType, query) {
                 }
                 break;
         }
-
+if (i<10)
         console.log(
             `op: ${op}
             params: ${params}
