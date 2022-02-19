@@ -1,5 +1,5 @@
 function solution(queryType, query) {
-    let result = {};
+    let result = new Map();
     let final = [];
     let addToKey = 0;
 
@@ -16,8 +16,12 @@ function solution(queryType, query) {
                 break;
 
             case "addToKey":
-                if (Object.keys(result).length > 0)
-                    addToKey += params[0];
+                // if (Object.keys(result).length > 0)
+                //     addToKey += params[0];
+                for (const [key, value] of result.entries()) {
+                    result[key+params[0]] = value;
+                    result.delete(key);
+                }
                 break;
 
             case "addToValue":
