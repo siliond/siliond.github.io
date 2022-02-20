@@ -13,14 +13,14 @@ function processNeighbors(field, x, y, state) {
             if (x!==iX||y!==iY) {
                 if (field[iX][iY])
                     noMines++;
-                neighbors.push(iX, iY);
+                neighbors.push([iX, iY]);
             }
         }
     }
 
     state[x][y] = noMines;
 
-    if (noMines == 0) {
+    if (noMines===0) {
         for (let i=0; i<neighbors.length; i++) {
             let [nX, nY] = neighbors[i];
             
