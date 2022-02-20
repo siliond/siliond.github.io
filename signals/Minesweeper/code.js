@@ -11,7 +11,7 @@ function processNeighbors(field, x, y, state) {
     for (let iX=(x-1>=0)?x-1:0;iX<=(x+1<field.length?x+1:field.length);iX++) {
         for (let iY=(y-1>=0)?y-1:0;iY<=(y+1<field[iX].length?y+1:field[iX].length);iY++) {
             if (x!==iX||y!==iY) {
-                if (v)
+                if (field[iX][iY])
                     noMines++;
                 neighbors.push(iX, iY);
             }
