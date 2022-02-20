@@ -20,7 +20,7 @@ describe("Minesweeper suite", function() {
             [-1, -1, -1]
         ]);
     });
-/*
+
     it(`Input:
     field:
     [[true,false,false,false,true,false], 
@@ -58,5 +58,4 @@ describe("Minesweeper suite", function() {
             [-1, -1, -1, -1, -1, -1]
         ]);
     });
-*/
 });
