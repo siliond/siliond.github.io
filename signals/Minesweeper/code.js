@@ -1,5 +1,9 @@
 function solution(field, x, y) {
-    let state = Array.from(field, a => Array.from(a, v => -1));
+    let noMines = 0;
+
+    let state = Array.from(field, (a, iX) => Array.from(a, (v, iY) => 
+        x==iX&&y==iY?-1:noMines
+        ));
 
     return state;
 }
