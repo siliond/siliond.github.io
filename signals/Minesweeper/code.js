@@ -22,7 +22,10 @@ function processNeighbors(field, x, y, state) {
 
     if (noMines == 0) {
         for (let i=0; i<neighbors.length; i++) {
-            state = processNeighbors(field, x, y, state);
+            let [nX, nY] = neighbors[i];
+            
+            if (state[nX][nY]===-1)
+                state = processNeighbors(field, nX, nY, state);
         }
     }
 
