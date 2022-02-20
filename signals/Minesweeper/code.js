@@ -1,5 +1,6 @@
 function solution(field, x, y) {
     let noMines = 0;
+    let neighbors = [];
 
     let state = Array.from(field, (a, iX) => Array.from(a, (v, iY) => 
         {
