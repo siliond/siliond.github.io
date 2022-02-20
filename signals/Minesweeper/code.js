@@ -6,8 +6,7 @@ function solution(field, x, y) {
             if (iX>=x-1&&iX<=x+1&&iY>=y-1&&iY<=y+1) {
                 if (x==iX&&y==iY)
                     return noMines;
-            } else {
-                if (v)
+                else if (v)
                     noMines++;
             }
 
