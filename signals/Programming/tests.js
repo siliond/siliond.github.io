@@ -1,5 +1,4 @@
 describe("Programming suite", function() {
-    /*
     it(`Input:
     queryType:
     ["insert", 
@@ -77,7 +76,7 @@ describe("Programming suite", function() {
             [-4]
         ])).toEqual(-1);
     });
-*/
+
     it(`Input:
     queryType:
     ["addToKey", 
