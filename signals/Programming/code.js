@@ -4,7 +4,7 @@ function solution(queryType, query) {
     let addToKey = 0;
 
     for (let i = 0; i < queryType.length; i++) {
-        let [op, params] = [queryType[i], query[i]];
+        const [op, params] = [queryType[i], query[i]];
 
         switch (op) {
             case "insert":
@@ -16,8 +16,12 @@ function solution(queryType, query) {
                 break;
 
             case "addToKey":
-                if (Object.keys(result).length > 0)
-                    addToKey += params[0];
+                // if (Object.keys(result).length > 0)
+                //     addToKey += params[0];
+                for (const [key, value] of Object.entries(result)) {
+                    result[parseInt(key) + params[0]] = value;
+                    delete result[key];
+                }
                 break;
 
             case "addToValue":
@@ -26,7 +30,14 @@ function solution(queryType, query) {
                 }
                 break;
         }
-        console.log(result, addToKey);
+
+        if (i < 10)
+            console.log(
+                `op: ${op}
+            params: ${params}
+            result: ${JSON. stringify(result)}
+            final: ${final}
+            addToKey: ${addToKey}`);
     }
     console.log(final);
     return final.reduce((prev, curr) => prev + curr, 0);

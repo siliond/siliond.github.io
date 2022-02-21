@@ -1,0 +1,107 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="../../scripts/jasmine/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="../../style/signals.css">
+
+    <script type="text/javascript" src="../../scripts/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/jasmine-html.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/boot0.js"></script>
+    <script type="text/javascript" src="../../scripts/jasmine/boot1.js"></script>
+
+    <script type="text/javascript" src="code.js"></script>
+    <script type="text/javascript" src="tests.js"></script>
+</head>
+
+<body>
+    <h2>Matrix45</h2>
+    <a href="../../index.html">
+        <p style="text-align:right">Back to Index</p>
+    </a>
+
+    <button type="button" class="collapsible">Problem:</button>
+    <div class="content">
+        <div class="markdown -arial"><p>Given a matrix of integers, we'd like to consider the sum of the elements within the area of a 45° rotated rectangle. More formally, the area is bounded by two diagonals parallel to the <a href="keyword://matrix-main-diagonal" target="_blank">main diagonal</a> and two diagonals parallel to the <a href="keyword://matrix-secondary-diagonal" target="_blank">secondary diagonal</a>. The dimensions of the rotated rectangle are defined by the number of elements along the borders of the rectangle.</p>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/rotatedRectSum/img/dimensions.gif?_tm=1636921002683" alt="dimensions"></p>
+            <p>Given integers <code>a</code> and <code>b</code> representing the dimensions of the rotated rectangle, and <code>matrix</code> (a matrix of integers), your task is to find the greatest sum of integers contained within an <code>a x b</code> rotated rectangle.</p>
+            <p><strong>Note:</strong> The order of the dimensions is not important - consider all <code>a x b</code> and <code>b x a</code> rectangles.</p>
+            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Example</span></p>
+            <ul>
+            <li>
+            <p>For</p>
+            <pre><code>matrix = [[1, 2, 3, 4, 0],
+                      [5, 6, 7, 8, 1],
+                      [3, 2, 4, 1, 4],
+                      [4, 3, 5, 1, 6]]
+            </code></pre>
+            <p><code>a = 2</code>, and <code>b = 3</code>, the output should be <code>solution(matrix, a, b) = 36</code>.</p>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/rotatedRectSum/img/example.gif?_tm=1636921003174" alt="example 1"></p>
+            </li>
+            <li>
+            <p>For</p>
+            <pre><code>matrix = [[-2, 3, 5, -1],
+                      [4, 3, -10, 10]]
+            </code></pre>
+            <p><code>a = 1</code>, and <code>b = 1</code>, the output should be  <code>solution(matrix, a, b) = 10</code>.</p>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/rotatedRectSum/img/example2.gif?_tm=1636921003591" alt="example 2"></p>
+            <p>The rotated rectangle with dimensions <code>1x1</code> is just one element, so the answer is the maximal element in <code>matrix</code>.</p>
+            </li>
+            <li>
+            <p>For</p>
+            <pre><code>matrix = [[-2, 3],
+                      [4, 3]]
+            </code></pre>
+            <p><code>a = 1</code>, and <code>b = 2</code>, the output should be  <code>solution(matrix, a, b) = 7</code>.</p>
+            <p><img src="https://codesignal.s3.amazonaws.com/tasks/rotatedRectSum/img/example3.gif?_tm=1636921003853" alt="example 3"></p>
+            </li>
+            </ul>
+            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Input/Output</span></p>
+            <ul>
+            <li>
+            <p><strong>[execution time limit] 4 seconds (js)</strong></p>
+            </li>
+            <li>
+            <p><strong>[input] array.array.integer matrix</strong></p>
+            <p>A matrix of integers.</p>
+            <p><em>Guaranteed constraints:</em><br>
+            <code>1 ≤ matrix.length, matrix[i].length ≤ 50</code>,<br>
+            <code>-10<sup>3</sup> ≤ matrix[i][j] ≤ 10<sup>3</sup></code>.</p>
+            </li>
+            <li>
+            <p><strong>[input] integer a</strong></p>
+            <p>The first rotated rectangle dimension.</p>
+            <p><em>Guaranteed constraints:</em><br>
+            <code>1 ≤ a ≤ 25</code>.</p>
+            </li>
+            <li>
+            <p><strong>[input] integer b</strong></p>
+            <p>The second rotated rectangle dimension.<br>
+            It's guaranteed that at least one rotated rectangle will fit in the given matrix.</p>
+            <p><em>Guaranteed constraints:</em><br>
+            <code>a ≤ b ≤ 25</code>.</p>
+            </li>
+            <li>
+            <p><strong>[output] integer</strong></p>
+            <p>The maximal sum of elements of a rotated rectangle with dimensions <code>a</code> and <code>b</code>.</p>
+            </li>
+            </ul>
+            <p><strong>[JavaScript] Syntax Tips</strong></p>
+            <pre><code class="language-javascript"><span class="hljs-comment">// Prints help message to the console</span>
+            <span class="hljs-comment">// Returns a string</span>
+            <span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span>(<span class="hljs-params">name</span>) {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"This prints to the console when you Run Tests"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, "</span> + name;
+            }
+            
+            </code></pre>
+            </div>
+            <div class="modal--content -layout-v" role="tab" tabindex="0"><div class="modal--header -layout-h"><div class="-layout-v -flex"><div class="-font-size-24 -line-height-28 -light -black -align-center -no-transform">Matrix Main Diagonal</div></div><div class="modal--close-button"><div role="button" class="button -type-black -view-flat -shape-circle" tabindex="0"><div class="button--content -layout-h -center-center -space-h-8"><div class="icon -size-24"><div class="-layout-h -center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg></div></div></div></div></div></div><div class="modal--body -padding-h-24 -padding-b-24"><div><div class="-padding-24"><div class="markdown"><p>The set of elements in a matrix that runs from the upper-left corner to the lower-right. In other words, it's the set of elements <code>matrix[i][i]</code>.</p>
+                <p>Examples:<br>
+                <img src="https://codesignal.s3.amazonaws.com/uploads/1584119303411/mainDiagonal.png" alt="examples"></p>
+                </div></div></div></div></div>
+                <div class="modal--content -layout-v" role="tab" tabindex="0"><div class="modal--header -layout-h"><div class="-layout-v -flex"><div class="-font-size-24 -line-height-28 -light -black -align-center -no-transform">Matrix Secondary Diagonal</div></div><div class="modal--close-button"><div role="button" class="button -type-black -view-flat -shape-circle" tabindex="0"><div class="button--content -layout-h -center-center -space-h-8"><div class="icon -size-24"><div class="-layout-h -center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg></div></div></div></div></div></div><div class="modal--body -padding-h-24 -padding-b-24"><div><div class="-padding-24"><div class="markdown"><p>The set of elements in a square matrix that runs from the upper-right corner to the lower-left corner. In other words, for a square matrix of size <code>n</code>, it's the set of elements <code>matrix[i][n - 1 - i]</code>.</p>
+                    <p>Examples:<br>
+                    <img src="https://codesignal.s3.amazonaws.com/uploads/1584119303383/secondaryDiagonal.png" alt="examples"></p>
+                    </div></div></div></div></div>
+    </div>
+
+    <script type="text/javascript" src="../../scripts/signals.js"></script>
+</body>
