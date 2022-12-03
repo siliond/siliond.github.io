@@ -10,6 +10,7 @@ window.open(twitterUrl, "_blank");
 // create a function that takes in a string of text
 function generateHashtags(text) {
 // split the text into individual words
+const commonWords = ['the', 'and', 'a', 'to', 'of', 'in', 'for', 'on', 'with'];
 const words = text.split(' ');
 // create an empty array to store the hashtags
 const hashtags = [];
