@@ -1,30 +1,36 @@
+var canvas, ctx;
+
 // Set up the canvas
 function setupCanvas() {
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
 
-// Set the dimensions of the canvas
-var W = 500;
-var H = 500;
-canvas.width = W;
-canvas.height = H;
+  // Set the dimensions of the canvas
+  var W = 500;
+  var H = 500;
+  canvas.width = W;
+  canvas.height = H;
 
-// Set the perspective and view angle
-var fov = 120;
-var angle = 45;
+  // Set the perspective and view angle
+  var fov = 120;
+  var angle = 45;
 
-// Set the position of the number
-var x = 100;
-var y = 100;
-var z = 100;
+  // Set the position of the number
+  var x = 100;
+  var y = 100;
+  var z = 100;
 
-// Set the rotation of the number
-var rx = 0;
-var ry = 0;
-var rz = 0;
+  // Set the rotation of the number
+  var rx = 0;
+  var ry = 0;
+  var rz = 0;
 
-// Set the color of the number
-var color = "#000000";
+  // Set the color of the number
+  var color = "#000000";
+
+
+  // Start the animation
+  animate();
 }
 
 // Draw the number
@@ -86,6 +92,3 @@ function animate() {
   update();
   requestAnimationFrame(animate);
 }
-
-// Start the animation
-animate();
