@@ -1,4 +1,5 @@
 // Set up the canvas
+function setupCanvas() {
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
@@ -24,6 +25,7 @@ var rz = 0;
 
 // Set the color of the number
 var color = "#000000";
+}
 
 // Draw the number
 function draw() {
