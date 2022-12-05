@@ -1,4 +1,4 @@
-var canvas, ctx;
+var canvas, ctx, W, H;
 
 // Set up the canvas
 function setupCanvas() {
@@ -6,8 +6,8 @@ function setupCanvas() {
   ctx = canvas.getContext("2d");
 
   // Set the dimensions of the canvas
-  var W = 500;
-  var H = 500;
+  W = 500;
+  H = 500;
   canvas.width = W;
   canvas.height = H;
 
