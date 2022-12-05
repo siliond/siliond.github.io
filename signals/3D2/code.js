@@ -3,8 +3,7 @@ var Canvas;
 // Set up the canvas
 function setupCanvas() {
   Canvas = {
-    canvas: ocument.getElementById("canvas")
-    ctx: canvas.getContext("2d"),
+    canvas: document.getElementById("canvas"),
 
     // Set the dimensions of the canvas
     W: 500,
@@ -27,6 +26,8 @@ function setupCanvas() {
     // Set the color of the number
     color: "#000000"
   }
+  Canvas.ctx = Canvas.canvas.getContext("2d");
+  
   canvas.width = Canvas.W;
   canvas.height = Canvas.H;
 
