@@ -21,5 +21,16 @@
         <canvas id="thecanvas" style="border:1px solid #000000;width: 500px;height: 500px;">Your browser does not support the HTML canvas tag.</canvas>
     </div>
 
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.</canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+    </script>
+
     <script type="text/javascript" src="../../scripts/signals.js"></script>
 </body>
