@@ -80,43 +80,41 @@ function draw() {
 }
 
 function drawCube() {
-/*
+    /*
     Canvas code for tracing the number 2 in 3d
 
-I'm sorry, but I am not able to browse the web, so I am unable to provide you with a specific code for tracing the number 2 in 3D using canvas. However, I can provide you with some general information and tips that may help you create your own code.
+    I'm sorry, but I am not able to browse the web, so I am unable to provide you with a specific code for tracing the number 2 in 3D using canvas. However, I can provide you with some general information and tips that may help you create your own code.
 
-Canvas is a drawing API that is part of HTML5 and is used to draw graphics on a web page. To create a 3D effect using canvas, you can use the transform method to apply a 3D transformation to the canvas context. You can use this method to rotate, scale, and translate the canvas to create the illusion of 3D space.
+    Canvas is a drawing API that is part of HTML5 and is used to draw graphics on a web page. To create a 3D effect using canvas, you can use the transform method to apply a 3D transformation to the canvas context. You can use this method to rotate, scale, and translate the canvas to create the illusion of 3D space.
 
-To draw a 2D shape on the canvas, you can use the beginPath method to create a new path, and then use methods such as moveTo, lineTo, arc, and closePath to define the shape. To fill the shape with a color, you can use the fill method. To draw the outline of the shape, you can use the stroke method.
+    To draw a 2D shape on the canvas, you can use the beginPath method to create a new path, and then use methods such as moveTo, lineTo, arc, and closePath to define the shape. To fill the shape with a color, you can use the fill method. To draw the outline of the shape, you can use the stroke method.
 
-To create a 3D effect, you can use the transform method to apply a 3D transformation to the canvas context, and then draw your 2D shape using the methods described above. You can experiment with different transformations to create the desired effect.
+    To create a 3D effect, you can use the transform method to apply a 3D transformation to the canvas context, and then draw your 2D shape using the methods described above. You can experiment with different transformations to create the desired effect.
 
-Here is an example of how you might use these methods to create a simple 3D cube:
-*/
-// save the current canvas context
-ctx.save();
+    Here is an example of how you might use these methods to create a simple 3D cube:
+    */
+    // save the current canvas context
+    Canvas.ctx.save();
 
-// apply a 3D transformation to the canvas context
-ctx.transform(1, 0, 0, 1, 0, 0);
+    // apply a 3D transformation to the canvas context
+    Canvas.ctx.transform(1, 0, 0, 1, 0, 0);
 
-// create a new path and define the shape of the cube
-ctx.beginPath();
-ctx.moveTo(100, 100);
-ctx.lineTo(200, 100);
-ctx.lineTo(200, 200);
-ctx.lineTo(100, 200);
-ctx.closePath();
+    // create a new path and define the shape of the cube
+    Canvas.ctx.beginPath();
+    Canvas.ctx.moveTo(100, 100);
+    Canvas.ctx.lineTo(200, 100);
+    Canvas.ctx.lineTo(200, 200);
+    Canvas.ctx.lineTo(100, 200);
+    Canvas.ctx.closePath();
 
-// fill the cube with a color
-ctx.fillStyle = "red";
-ctx.fill();
+    // fill the cube with a color
+    Canvas.ctx.fillStyle = "red";
+    Canvas.ctx.fill();
 
-// restore the original canvas context
-ctx.restore();
-
-
+    // restore the original canvas context
+    Canvas.ctx.restore();
 }
-    
+
 // Update the position and rotation of the number
 function update() {
     Canvas.x -= 0.5;
