@@ -39,7 +39,7 @@ function setupCanvas() {
 // Draw the number
 function draw() {
   // Clear the canvas
-  ctx.clearRect(0, 0, Canvas.W, Canvas.H);
+  Canvas.ctx.clearRect(0, 0, Canvas.W, Canvas.H);
 
   // Convert 3D coordinates to 2D coordinates
   var scale = Canvas.fov / (Canvas.fov + Canvas.z);
