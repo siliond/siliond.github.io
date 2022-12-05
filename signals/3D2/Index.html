@@ -12,70 +12,12 @@
 </head>
 
 <body>
-    <h2>Combinations</h2>
+    <h2>3D 2</h2>
     <a href="../../index.html">
         <p style="text-align:right">Back to Index</p>
     </a>
 
-    <button type="button" class="collapsible">Problem:</button>
     <div class="content">
-        <div class="markdown -arial"><p>You are given two arrays of integers <code>a</code> and <code>b</code>, which are both sorted in an ascending order and contain unique elements (i.e. no duplicates).</p>
-            <p>You can take several (possibly zero) numbers from the array <code>b</code> and add them to <code>a</code> at any positions in any order. You want the array <code>a</code> to be an <a href="keyword://arithmetic-progression" target="_blank">arithmetic progression</a> after this.</p>
-            <p>Your task is to find the maximal length of the resulting arithmetic progression represented by array <code>a</code> that can be achieved. If it is impossible to obtain an array forming an arithmetic progression, return <code>-1</code>.</p>
-            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Example</span></p>
-            <ul>
-            <li>
-            <p>For <code>a = [0, 4, 8, 16]</code> and <code>b = [0, 2, 6, 12, 14, 20]</code>, the output should be <code>solution(a, b) = 6</code>.</p>
-            <p>You can add <code>b[3] = 12</code> and <code>b[5] = 20</code> to <code>a</code> and obtain array <code>[0, 4, 8, 12, 16, 20]</code>, which is an arithmetic progression of length <code>6</code> (the sequence increases by <code>4</code> from each element to the next). It is impossible to obtain a longer arithmetic progression, so the answer is <code>6</code>.</p>
-            </li>
-            <li>
-            <p>For <code>a = [5, 7, 13, 14]</code> and <code>b = [9, 11, 15]</code>, the output should be <code>solution(a, b) = -1</code>.</p>
-            <p>It is impossible to obtain an arithmetic progression with these elements, so the answer is <code>-1</code>.</p>
-            </li>
-            </ul>
-            <p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Input/Output</span></p>
-            <ul>
-            <li>
-            <p><strong>[execution time limit] 4 seconds (js)</strong></p>
-            </li>
-            <li>
-            <p><strong>[input] array.integer a</strong></p>
-            <p>An array of unique integers sorted in ascending order.</p>
-            <p><em>Guaranteed constraints:</em><br>
-            <code>2 ≤ a.length ≤ 1000</code>,<br>
-            <code>0 ≤ a[i] ≤ 10<sup>5</sup></code>.</p>
-            </li>
-            <li>
-            <p><strong>[input] array.integer b</strong></p>
-            <p>An array of unique integers sorted in ascending order.</p>
-            <p><em>Guaranteed constraints:</em><br>
-            <code>2 ≤ b.length ≤ 1000</code>,<br>
-            <code>0 ≤ b[i] ≤ 10<sup>5</sup></code>.</p>
-            </li>
-            <li>
-            <p><strong>[output] integer</strong></p>
-            <p>The maximal length of the arithmetic progression constructed by adding a certain number of elements from <code>b</code> to the array <code>a</code>.</p>
-            </li>
-            </ul>
-            <p><strong>[JavaScript] Syntax Tips</strong></p>
-            <pre><code class="language-javascript"><span class="hljs-comment">// Prints help message to the console</span>
-            <span class="hljs-comment">// Returns a string</span>
-            <span class="hljs-keyword">function</span> <span class="hljs-title function_">helloWorld</span>(<span class="hljs-params">name</span>) {
-                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"This prints to the console when you Run Tests"</span>);
-                <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, "</span> + name;
-            }
-            
-            </code></pre>
-            </div>
-            <div class="modal--content -layout-v" role="tab" tabindex="0"><div class="modal--header -layout-h"><div class="-layout-v -flex"><div class="-font-size-24 -line-height-28 -light -black -align-center -no-transform">Arithmetic Progression</div></div><div class="modal--close-button"><div role="button" class="button -type-black -view-flat -shape-circle" tabindex="0"><div class="button--content -layout-h -center-center -space-h-8"><div class="icon -size-24"><div class="-layout-h -center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg></div></div></div></div></div></div><div class="modal--body -padding-h-24 -padding-b-24"><div><div class="-padding-24"><div class="markdown"><p>A type of sequence in which consecutive terms are separated by a common difference. Also known as an <strong>arithmetic sequence</strong>.</p>
-                <p>In other words, a sequence <code>seq</code> is considered to be <strong>arithmetic progression</strong> if and only if for every <code>0 &lt; i &lt; seq.length</code>, <code>seq[i] - seq[i - 1] = d</code>, where <code>d</code> is a fixed integer representing the common difference.</p>
-                <p>Examples:</p>
-                <ul>
-                <li><code>3, 5, 7, 9, ...</code> is an arithmetic progression, with a common difference of <code>2</code>;</li>
-                <li><code>11, 6, 1, -4, ...</code> is an arithmetic progression, with a common difference of <code>-5</code>;</li>
-                <li><code>2, 4, 8, 16, ...</code> is <strong>not</strong> an arithmetic progression - there isn't a common difference between consecutive terms.</li>
-                </ul>
-                </div></div></div></div></div>
     </div>
 
     <script type="text/javascript" src="../../scripts/signals.js"></script>
