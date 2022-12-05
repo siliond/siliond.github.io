@@ -3,7 +3,7 @@ var Canvas;
 // Set up the canvas
 function setupCanvas() {
     Canvas = {
-        canvas: document.getElementById("canvas"),
+        canvas: document.getElementById("thecanvas"),
 
         // Set the dimensions of the canvas
         W: 500,
