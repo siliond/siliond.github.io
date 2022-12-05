@@ -28,8 +28,8 @@ function setupCanvas() {
     }
     Canvas.ctx = Canvas.canvas.getContext("2d");
 
-    canvas.width = Canvas.W;
-    canvas.height = Canvas.H;
+    Canvas.canvas.width = Canvas.W;
+    Canvas.canvas.height = Canvas.H;
 
 
     // Start the animation
