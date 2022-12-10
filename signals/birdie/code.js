@@ -1,5 +1,5 @@
 // Set up the game
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv');
+var game = new Phaser.Game(400, 600, Phaser.AUTO, 'gameDiv');
 
 // Add the 'mainState' state to the game
 game.state.add('mainState', mainState);
