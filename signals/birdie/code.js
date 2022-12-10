@@ -1,53 +1,65 @@
-// Create a new game instance and set the canvas dimensions
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-canvas');
+// Set up the game
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv');
 
-// Create a new 'main' state that will contain the game
+// Add the 'mainState' state to the game
+game.state.add('mainState', mainState);
+
+// Start the 'mainState' state
+game.state.start('mainState');
+
+// The main game state
 var mainState = {
 
     // Function called first to load all the assets
     preload: function() {
-        // Change the background color of the game
-        game.stage.backgroundColor = '#71c5cf';
+        // Set up the scaling of the game
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.pageAlignHorizontally = true;
+        game.scale.pageAlignVertically = true;
+        game.scale.setScreenSize(true);
 
-        // Load the bird sprite
-        game.load.image('bird', 'assets/bird.png');
+        // Load the sprite sheet for the player
+        game.load.spritesheet('player', 'assets/bird.png', 32, 32);
     },
 
-    // Function called after 'preload' to setup the game
+    // Function called after 'preload' to set up the game
     create: function() {
-        // Display the bird at the position x=100 and y=245
-        this.bird = game.add.sprite(100, 245, 'bird');
+        // Start the physics engine
+        game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        // Add gravity to the bird to make it fall
-        game.physics.arcade.enable(this.bird);
-        this.bird.body.gravity.y = 1000;
+        // Add the player to the game
+        this.player = game.add.sprite(32, game.world.height - 150, 'player');
 
-        // Call the 'jump' function when the spacekey is hit
+        // Enable physics for the player
+        game.physics.arcade.enable(this.player);
+
+        // Add gravity to the player
+        this.player.body.gravity.y = 1000;
+
+        // Call the 'jump' function when the space key is pressed
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.jump, this);
+
+        // Enable touch input
+        game.input.touch.start();
     },
 
     // Function called 60 times per second
     update: function() {
-        // If the bird is out of the screen (too high or too low)
-        // Call the 'restartGame' function
-        if (this.bird.y < 0 || this.bird.y > 490)
+        // If the player is out of the world (too high or too low), call the 'restartGame' function
+        if (this.player.y < 0 || this.player.y > game.world.height)
             this.restartGame();
     },
 
-    // Make the bird jump
+    // Make the player jump
     jump: function() {
-        // Add a vertical velocity to the bird
-        this.bird.body.velocity.y = -350;
+        // Add a vertical velocity to the player
+        this.player.body.velocity.y = -350;
     },
 
     // Restart the game
     restartGame: function() {
-        // Start the 'main' state, which restarts the game
-        game.state.start('main');
-    },
+        // Start the 'mainState' state, which restarts the game
+        game.state.start('mainState');
+    }
 };
-
-// Add and start the 'main' state to start the game
-game.state.add('main', mainState);
-game.state.start('main');
