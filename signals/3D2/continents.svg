@@ -1,0 +1,7 @@
+<svg width="500" height="500">
+  <path d="M250,250 L250,200 A50,50 0 0,1 314.64,128.36 Z" fill="#3399ff" stroke="black" />
+  <path d="M250,250 L250,200 A100,100 0 0,1 433.01,266.68 Z" fill="#33cc33" stroke="black" />
+  <path d="M250,250 L250,200 A150,150 0 0,1 500,250 Z" fill="#ffcc00" stroke="black" />
+  <path d="M250,250 L250,200 A200,200 0 0,1 500,500 Z" fill="#ff6600" stroke="black" />
+  <path d="M250,250 L250,200 A250,250 0 0,1 250,0 Z" fill="#9933ff" stroke="black" />
+</svg>
