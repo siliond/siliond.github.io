@@ -17,7 +17,11 @@ function createOfferDone(offer) {
     setLocalPromise = peerConnection.setLocalDescription(offer);
     setLocalPromise.then(setLocalDone, setLocalFailed);
 
-    makeCode(offer.toJSON());
+    const offerLink = window.location.href.replace("offering", "answering");
+    const queryString = `?json=${encodeURIComponent(JSON.stringify(offer))}`;
+    const url = `${offerLink}${queryString}`;
+
+    makeCode(url);
 }
 
 function makeCode(offer) {
