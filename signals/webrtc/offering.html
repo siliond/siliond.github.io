@@ -7,8 +7,6 @@
     <title>offering webrtc without signaling server demo</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <script src="libraries/qrcode.js"></script>
-
     <script src="common.js"></script>
     <script src="offering.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -28,7 +26,6 @@
 
     <p>
         <button id="buttoncreateoffer" onclick="clickcreateoffer()">create offer</button>
-        <div id="qrcode"></div>
     </p>
 
     <span id="spanoffer" class="invisible">
@@ -37,6 +34,7 @@ please copy the offer below and send it to a peer.
 </p>
 <textarea id="textoffer" readonly
   placeholder="please wait a few seconds"></textarea>
+  <div id="qrcode"></div>
 <button id="buttonoffersent" onclick="clickoffersent()" disabled>offer sent</button>
 </span>
 
@@ -48,6 +46,8 @@ please wait for peer to give answer and paste it below
   placeholder="please paste answer from peer"></textarea>
 <button id="buttonanswerpasted" onclick="clickanswerpasted()">answer pasted</button>
 </span>
+
+    <script src="libraries/qrcode.js"></script>
 
 </body>
 
