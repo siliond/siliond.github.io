@@ -17,7 +17,7 @@ function createOfferDone(offer) {
     setLocalPromise = peerConnection.setLocalDescription(offer);
     setLocalPromise.then(setLocalDone, setLocalFailed);
 
-    makeCode(offer);
+    makeCode(offer.toJSON());
 }
 
 function makeCode(offer) {
