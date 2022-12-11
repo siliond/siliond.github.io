@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>offering webrtc without signaling server demo</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
-    <script src="common.js"></script>
-    <script src="offering.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
@@ -29,26 +26,26 @@
     </p>
 
     <span id="spanoffer" class="invisible">
-<p>
-please copy the offer below and send it to a peer.
-</p>
-<textarea id="textoffer" readonly
-  placeholder="please wait a few seconds"></textarea>
-  <div id="qrcode"></div>
-<button id="buttonoffersent" onclick="clickoffersent()" disabled>offer sent</button>
-</span>
+    <p>
+      please copy the offer below and send it to a peer.
+    </p>
+    <textarea id="textoffer" readonly placeholder="please wait a few seconds"></textarea>
+    <div id="qrcode"></div>
+    <button id="buttonoffersent" onclick="clickoffersent()" disabled>offer sent</button>
+  </span>
 
     <span id="spananswer" class="invisible">
-<p>
-please wait for peer to give answer and paste it below
-</p>
-<textarea id="textanswer"
-  placeholder="please paste answer from peer"></textarea>
-<button id="buttonanswerpasted" onclick="clickanswerpasted()">answer pasted</button>
-</span>
+    <p>
+      please wait for peer to give answer and paste it below
+    </p>
+    <textarea id="textanswer" placeholder="please paste answer from peer"></textarea>
+    <button id="buttonanswerpasted" onclick="clickanswerpasted()">answer pasted</button>
+  </span>
 
     <script src="libraries/qrcode.js"></script>
 
+    <script src="common.js"></script>
+    <script src="offering.js"></script>
 </body>
 
 </html>
