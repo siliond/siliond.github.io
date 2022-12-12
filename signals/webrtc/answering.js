@@ -120,6 +120,10 @@ function lasticecandidate() {
     textelement = document.getElementById('textanswer');
     answer = peerConnection.localDescription;
     textelement.value = JSON.stringify(answer);
+
+    //Send answer
+    dataChannel.send(answer);
+    chatlog(answer);
 }
 
 function handledatachannel(event) {
