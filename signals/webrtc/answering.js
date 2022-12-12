@@ -1,3 +1,15 @@
+/*
+In a local Webrtc implementation is there a way to pass the answer to the other client after accepting the offer
+Yes, in a WebRTC implementation, after a client accepts an offer, they can send an answer back to the other client. This is done using the setRemoteDescription() method, which is part of the WebRTC API. This method is used to set the remote description of the remote peer, which includes information about the media and network settings that the remote peer is using. Once the remote description has been set, the client can use the createAnswer() method to generate an answer that is based on the remote description, and then use the setLocalDescription() method to set the local description, which includes the answer that was generated. After the local description has been set, the client can send the answer to the other client using the appropriate signaling mechanism.
+
+
+
+Daniel Silion
+How would you send the answer?
+After the local description has been set, the client can send the answer to the other client using the appropriate signaling mechanism. This typically involves using a signaling server to exchange messages between the clients. For example, the client could use the send() method of the RTCPeerConnection object to send the answer to the signaling server, which would then forward the message to the other client. The other client could then use the onmessage event of the RTCPeerConnection object to receive the answer and process it.
+*/
+
+
 function getJSONParam() {
     // Get the current URL
     const url = new URL(window.location.href);
