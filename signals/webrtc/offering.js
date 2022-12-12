@@ -22,6 +22,8 @@ function createOfferDone(offer) {
     const url = `${offerLink}${queryString}`;
 
     makeCode(url);
+
+    clickoffersent();
 }
 
 function makeCode(offer) {
