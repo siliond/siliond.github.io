@@ -18,12 +18,15 @@ function createOfferDone(offer) {
     setLocalPromise.then(setLocalDone, setLocalFailed);
 
     const offerLink = window.location.href.replace("offering", "answering");
-    const queryString = `?json=${encodeURIComponent(JSON.stringify(offer))}`;
+    const queryString = `?json=${pako.deflate(JSON.stringify(offer))}`; //encodeURIComponent
     const url = `${offerLink}${queryString}`;
 
     makeCode(url);
 
     clickoffersent();
+
+    // Save data to local storage
+    localStorage.setItem('Pong4D', { clients: [{ offer: offer, answer: null }] });
 }
 
 function makeCode(offer) {
@@ -76,3 +79,25 @@ function setRemoteFailed(reason) {
     console.log('setRemoteFailed');
     console.log(reason);
 }
+
+function getJSONParam() {
+    // Get the current URL
+    const url = new URL(window.location.href);
+
+    // Get the value of the "id" parameter from the URL
+    const json = url.searchParams.get('json');
+
+    textoffer.value = json;
+    clickofferpasted();
+
+    // Retrieve data from local storage
+    let data = localStorage.getItem('key');
+    console.log(data); // Outputs: "value"
+}
+
+//Yes, you can use the storage event in JavaScript to get notified when another tab or window changes a value in local storage. This event is triggered whenever a value in local storage is added, modified, or removed, and it allows you to monitor the local storage and take action when a change occurs.
+window.addEventListener('storage', function(event) {
+    if (event.key === 'myKey') {
+        console.log('The value for myKey was changed to:', event.newValue);
+    }
+});
