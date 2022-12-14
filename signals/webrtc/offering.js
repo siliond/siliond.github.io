@@ -18,7 +18,7 @@ function createOfferDone(offer) {
     setLocalPromise.then(setLocalDone, setLocalFailed);
 
     const offerLink = window.location.href.replace("offering", "answering");
-    const queryString = `?json=${pako.deflate(JSON.stringify(offer))}`; //encodeURIComponent
+    const queryString = `?json=${encodeURIComponent(pako.deflate(JSON.stringify(offer)))}`;
     const url = `${offerLink}${queryString}`;
 
     makeCode(url);
