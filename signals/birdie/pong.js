@@ -51,4 +51,8 @@ function create() {
   
   // Create the upKey and downKey objects to detect the up and down arrow keys
   upKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-  downKey = this.input.keyboard.addKey(Ph
+  downKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+}
+
+function update() {
+  // Update the position of the left paddle based
