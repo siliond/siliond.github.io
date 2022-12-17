@@ -55,4 +55,51 @@ function create() {
 }
 
 function update() {
-  // Update the position of the left paddle based
+  // Update the position of the left paddle based on the up and down arrow keys
+  if (upKey.isDown && leftPaddle.y > 0) {
+    leftPaddle.y -= 5;
+  }
+  if (downKey.isDown && leftPaddle.y + leftPaddle.height < game.config.height) {
+    leftPaddle.y += 5;
+  }
+  
+  // Update the position of the right paddle based on the up and down arrow keys
+  if (upKey.isDown && rightPaddle.y > 0) {
+    rightPaddle.y -= 5;
+  }
+  if (downKey.isDown && rightPaddle.y + rightPaddle.height < game.config.height) {
+    rightPaddle.y += 5;
+  }
+  
+  // Update the ball position based on its velocity
+  ball.x += ball.vx;
+  ball.y += ball.vy;
+  
+  // Check for ball collisions with the paddles and walls
+  if (ball.x - ball.radius <= leftPaddle.x + leftPaddle.width && ball.y >= leftPaddle.y && ball.y <= leftPaddle.y + leftPaddle.height) {
+    // The ball
+
+function update() {
+  // Update the position of the left paddle based on the up and down arrow keys
+  if (upKey.isDown) {
+    leftPaddle.y -= 5;
+  }
+  else if (downKey.isDown) {
+    leftPaddle.y += 5;
+  }
+  
+  // Keep the left paddle within the bounds of the game
+  leftPaddle.y = Phaser.Math.Clamp(leftPaddle.y, 0, game.config.height - leftPaddle.height);
+  
+  // Update the position of the right paddle based on the up and down arrow keys
+  if (upKey.isDown) {
+    rightPaddle.y -= 5;
+  }
+  else if (downKey.isDown) {
+    rightPaddle.y += 5;
+  }
+  
+  // Keep the right paddle within the bounds of the game
+  rightPaddle.y = Phaser.Math.Clamp(rightPaddle.y, 0, game.config.height - rightPaddle.height);
+}
+
