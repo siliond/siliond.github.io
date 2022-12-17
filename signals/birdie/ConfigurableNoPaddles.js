@@ -46,3 +46,27 @@ function create() {
     paddles.add(paddle3);
     
     // Set the starting positions and sizes of the paddles
+
+
+
+function update() {
+  // Update the positions of the paddles based on the arrow keys
+  paddles.children.iterate(function(paddle) {
+    if (upKey.isDown) {
+      paddle.y -= 5;
+    }
+    else if (downKey.isDown) {
+      paddle.y += 5;
+    }
+    if (leftKey.isDown) {
+      paddle.x -= 5;
+    }
+    else if (rightKey.isDown) {
+      paddle.x += 5;
+    }
+    
+    // Keep the paddles within the bounds of the game
+    paddle.y = Phaser.Math.Clamp(paddle.y, 0, game.config.height - paddle.height);
+    paddle.x = Phaser.Math.Clamp(paddle.x, 0, game.config.width - paddle.width);
+  });
+}
