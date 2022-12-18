@@ -44,13 +44,26 @@ const ys = tf.tensor2d([
   ...
 ]);
 
-// // Create an array of fit callbacks
-const fitCallbacks = tfvis.show.fitCallbacks(document.getElementById('visualizer'), ['loss']);
+// // Create// Create a visualizer
+const visualizer = document.getElementById('visualizer');
 
-// Train the model with the training data and fit callbacks
+// Create a chart for the loss values
+const lossChart = tfvis.chart.linechart({name: 'Loss'});
+
+// Define the onEpochEnd callback function
+function onEpochEnd(logs) {
+  // Update the loss chart with the latest loss value
+  tfvis.render.linechart(
+    {name: 'Loss', tab: 'Training'},
+    {values: [{x: logs.epoch, y: logs.loss}]},
+    lossChart,
+  );
+}
+
+// Train the model with the training data and onEpochEnd callback
 model.fit(xs, ys, {
   epochs: 10,
-  callbacks: fitCallbacks
+  callbacks: {onEpochEnd}
 }).then(() => {
   console.log('Model trained!');
 });
@@ -65,13 +78,4 @@ if (prediction.dataSync()[0] > prediction.dataSync()[1]) {
   // move up
 } else {
   // move down
-}
-
-function onEpochEnd(logs) {
-  // Update the loss chart with the latest loss value
-  tfvis.render.linechart(
-    {name: 'Loss', tab: 'Training'},
-    {values: [{x: logs.epoch, y: logs.loss}]},
-    lossChart,
-  );
 }
