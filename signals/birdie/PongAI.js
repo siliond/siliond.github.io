@@ -79,3 +79,99 @@ if (prediction.dataSync()[0] > prediction.dataSync()[1]) {
 } else {
   // move down
 }
+
+// Load the training data
+const trainingData = [
+  {
+    ballX: 200,
+    ballY: 100,
+    paddle1X: 150,
+    paddle1Y: 125,
+    paddle2X: 250,
+    paddle2Y: 150,
+    ballXVelocity: 2,
+    ballYVelocity: -1,
+    action: "move up",
+    outcome: "win"
+  },
+  {
+    ballX: 202,
+    ballY: 99,
+    paddle1X: 150,
+    paddle1Y: 125,
+    paddle2X: 250,
+    paddle2Y: 148,
+    ballXVelocity: 2,
+    ballYVelocity: -1,
+    action: "stay still",
+    outcome: "win"
+  },
+  {
+    ballX: 204,
+    ballY: 98,
+    paddle1X: 150,
+    paddle1Y: 125,
+    paddle2X: 250,
+    paddle2Y: 146,
+    ballXVelocity: 2,
+    ballYVelocity: -1,
+    action: "stay still",
+    outcome: "win"
+  },
+  {
+    ballX: 206,
+    ballY: 97,
+    paddle1X: 150,
+    paddle1Y: 125,
+    paddle2X: 250,
+    paddle2Y: 144,
+    ballXVelocity: 2,
+    ballYVelocity: -1,
+    action: "stay still",
+    outcome: "win"
+  },
+  {
+    ballX: 208,
+    ballY: 96,
+    paddle1X: 150,
+    paddle1Y: 125,
+    paddle2X: 250,
+    paddle2Y: 142,
+    ballXVelocity: 2,
+    ballYVelocity: -1,
+    action: "stay still",
+    outcome: "win"
+  },
+  {
+    ballX: 210,
+    ballY: 95,
+    paddle1X: 150,
+    paddle1Y: 125,
+    paddle2X: 250,
+    paddle2Y: 140,
+    ballXVelocity: 2,
+    ballYVelocity: -1,
+    action: "stay still",
+    outcome: "lose"  // Missed bouncing back the ball
+  }
+];
+
+// Define the model architecture
+const model = tf.sequential();
+model.add(tf.layers.dense({units: 8, inputShape: 8, activation: "relu"}));
+model.add(tf.layers.dense({units: 4, activation: "relu"}));
+model.add(tf.layers.dense({units: 1, activation: "sigmoid"}));
+
+// Compile the model
+model.compile({
+  optimizer: "adam",
+  loss: "meanSquaredError",
+  metrics: ["accuracy"]
+});
+
+// Convert the training data into tensors
+const inputTensor = tf.tensor2d(trainingData.map(data => [
+  data.ballX,
+  data.ballY,
+  data.paddle1X
+
