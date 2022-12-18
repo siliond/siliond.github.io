@@ -1,12 +1,10 @@
 /*
-
-This code uses the touchstart, touchend, and touchmove events to track the movement of the user's finger on the screen. The dragStart function is called when the user first touches the joystick element, and it sets the initial position of the finger. The dragEnd function is called when the user lifts their finger off the screen, and it resets the initial position. The drag function is called continuously while the user's finger is moving on the screen, and it updates the current position of the finger based on the clientX and clientY properties of the touch event. The setTranslate function is used to update the position of the joystick element on the screen based on the current position of the finger.
-
-You can customize this code to suit your specific needs. For example, you can add constraints to limit the range of movement of the joystick, or you can add logic to interpret the joystick position and perform an action based on it.
+In this code, we have added a line element to the HTML and accessed it using JavaScript. We have also added a new function called drag that is called continuously while the user's finger is moving on the screen. The drag function calculates the angle of the line based on the current position of the finger using the atan2 function and the clientX and clientY properties of the touch event. It then rotates the line to match the angle using the rotate function of the transform property.
 */
 
 
 const joystick = document.getElementById("joystick");
+const line = document.getElementById("line");
 
 let isDragging = false;
 let currentX;
@@ -32,6 +30,9 @@ function dragEnd(e) {
   initialY = currentY;
 
   isDragging = false;
+
+  // Reset the line to the center of the joystick
+  line.style.transform = "rotate(0deg)";
 }
 
 function drag(e) {
@@ -44,6 +45,12 @@ function drag(e) {
     yOffset = currentY;
 
     setTranslate(currentX, currentY, joystick);
+
+    // Calculate the angle of the line based on the current position of the finger
+    let angle = Math.atan2(currentY, currentX) * 180 / Math.PI;
+
+    // Rotate the line to match the angle
+    line.style.transform = "rotate(" + angle + "deg)";
   }
 }
 
