@@ -1,5 +1,5 @@
 // Set up the game
-const game = new Phaser.Game(500, 500, Phaser.CANVAS, "game-container");
+const game = new Phaser.Game(800, 600, Phaser.CANVAS, "game-container");
 
 // Set up the keys for controlling the paddles
 const keys = game.input.keyboard.addKeys({
@@ -22,9 +22,11 @@ const gameState = {
         );
         this.menu.anchor.setTo(0.5, 0.5); // Set the pivot point of the menu to its center
         this.menu.inputEnabled = true; // Enable user input for the menu
+
+        let numPaddles = 3; // Configurable number of paddles
         this.menu.events.onInputDown.add(function() {
             // When the user clicks the menu, open a prompt to enter the number of paddles
-            const numPaddles = prompt("Enter the number of paddles (2-4):");
+            numPaddles = prompt("Enter the number of paddles (2-4):");
 
             if (numPaddles >= 2 && numPaddles <= 4) {
                 // If the user enters a valid number of paddles, start the game
@@ -34,39 +36,56 @@ const gameState = {
             }
         });
 
-        // Set up the paddles
-        const numPaddles = 3; // Configurable number of paddles
-        this.paddles = game.add.group();
+        // Create the paddles
+        const shapeRadius = 300; // The radius of the geometric shape on which the paddles will move
+        const paddleWidth = 20; // The width of the paddles
+        const paddleHeight = 100; // The height of the paddles
         for (let i = 0; i < numPaddles; i++) {
-            const paddle = game.add.graphics(0, 0);
-            paddle.beginFill(0x000000); // Set the fill color to black
-            paddle.drawRect(
-                i * (game.width / numPaddles) + 50, // Center the paddle on its side of the field
-                game.height / 2,
-                20,
-                100
-            ); // Draw the paddle as a rectangle
+            // Calculate the x and y position of the paddle based on the number of sides and the radius of the shape
+            const x = shapeRadius * Math.cos(2 * Math.PI * i / numPaddles);
+            const y = shapeRadius * Math.sin(2 * Math.PI * i / numPaddles);
+            const paddle = this.add.rectangle(x, y, paddleWidth, paddleHeight, 0xffffff);
             this.paddles.add(paddle);
         }
 
-        // Set up the ball
-        this.ball = game.add.graphics(0, 0);
-        this.ball.beginFill(0x000000); // Set the fill color to black
-        this.ball.drawCircle(game.width / 2, game.height / 2, 10); // Draw the ball as a circle
-        this.ball.body.velocity.x = 100; // Set the initial velocity of the ball
-        this.ball.body.velocity.y = 100;
+        // Set the paddles to be immovable
+        this.physics.add.collider(this.paddles, this.ball, function(paddle, ball) {
+            ball.setVelocityX(-1 * ball.body.velocity.x);
+        }, null, this);
+
+        // Set the paddles to be controlled by the keyboard
+        this.cursors = this.input.keyboard.createCursorKeys();
+
+        // Create the ball
+        this.ball = this.add.graphics();
+        this.ball.fillStyle(0xffffff, 1);
+        this.ball.fillCircle(400, 300, 20); // The ball will be a circle with radius 20
+        this.physics.add.existing(this.ball); // Add the ball to the physics system
+
+        // Set the ball's bouncing properties
+        this.ball.setBounce(1);
+        this.ball.setCollideWorldBounds(true);
+
+        // Set the ball's velocity
+        this.ball.setVelocityX(200);
+        this.ball.setVelocityY(200);
     },
 
     update: function() {
-        // Check for key input and update the position of the paddles
-        this.paddles.forEach((paddle) => {
-            if (keys.up.isDown) {
-                paddle.y -= 5; // Move the paddle up
+        // Move the paddles according to the cursor keys
+        this.paddles.children.iterate(function(paddle, index) {
+            // Calculate the angle of the paddle's movement based on its position on the shape
+            const angle = 2 * Math.PI * index / this.paddles.children.size;
+
+            // Set the paddle's velocity based on the angle and the cursor keys
+            if (this.cursors.up.isDown) {
+                this.physics.velocityFromAngle(angle, -100, paddle.body.velocity);
+            } else if (this.cursors.down.isDown) {
+                this.physics.velocityFromAngle(angle, 100, paddle.body.velocity);
+            } else {
+                paddle.body.setVelocity(0);
             }
-            if (keys.down.isDown) {
-                paddle.y += 5; // Move the paddle down
-            }
-        });
+        }, this);
 
         // Check for collisions with the paddles or the sides of the field
         game.physics.collide(this.ball, this.paddles, function(ball, paddle) {
