@@ -1,5 +1,5 @@
 // Set up the game
-const game = new Phaser.Game(800, 600, Phaser.CANVAS, "game-container");
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, "game-container");
 
 // Set up the game state
 const gameState = {
