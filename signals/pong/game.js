@@ -7,7 +7,7 @@ const gameState = {
     cursors: {
         up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
         down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
-    }
+    },
 
     create: function() {
         // Add a menu to allow the user to specify the number of paddles
