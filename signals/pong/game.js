@@ -19,31 +19,32 @@ const gameConfig = {
                 down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
             };
 
-            // Add a menu to allow the user to specify the number of paddles
-            this.menu = this.add.text(
-                this.width / 2,
-                this.height / 2,
-                "Enter the number of paddles:", {
-                    font: "18px Arial",
-                    fill: "#000000",
-                    align: "center",
-                }
-            );
-            this.menu.anchor.setTo(0.5, 0.5); // Set the pivot point of the menu to its center
-            this.menu.inputEnabled = true; // Enable user input for the menu
-
             let numPaddles = 3; // Configurable number of paddles
-            this.menu.events.onInputDown.add(function() {
-                // When the user clicks the menu, open a prompt to enter the number of paddles
-                numPaddles = prompt("Enter the number of paddles (2-4):");
 
-                if (numPaddles >= 2 && numPaddles <= 4) {
-                    // If the user enters a valid number of paddles, start the game
-                    // this.state.start("game", true, false, numPaddles);
-                } else {
-                    // If the user enters an invalid number of paddles, show an error message
-                }
-            });
+            // // Add a menu to allow the user to specify the number of paddles
+            // this.menu = this.add.text(
+            //     this.width / 2,
+            //     this.height / 2,
+            //     "Enter the number of paddles:", {
+            //         font: "18px Arial",
+            //         fill: "#000000",
+            //         align: "center",
+            //     }
+            // );
+            // this.menu.anchor.setTo(0.5, 0.5); // Set the pivot point of the menu to its center
+            // this.menu.inputEnabled = true; // Enable user input for the menu
+
+            // this.menu.events.onInputDown.add(function() {
+            //     // When the user clicks the menu, open a prompt to enter the number of paddles
+            //     numPaddles = prompt("Enter the number of paddles (2-4):");
+
+            //     if (numPaddles >= 2 && numPaddles <= 4) {
+            //         // If the user enters a valid number of paddles, start the game
+            //         // this.state.start("game", true, false, numPaddles);
+            //     } else {
+            //         // If the user enters an invalid number of paddles, show an error message
+            //     }
+            // });
 
             // Create the paddles
             const shapeRadius = 300; // The radius of the geometric shape on which the paddles will move
