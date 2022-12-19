@@ -20,9 +20,9 @@ const gameConfig = {
             };
 
             // Add a menu to allow the user to specify the number of paddles
-            this.menu = game.add.text(
-                game.width / 2,
-                game.height / 2,
+            this.menu = this.add.text(
+                this.width / 2,
+                this.height / 2,
                 "Enter the number of paddles:", {
                     font: "18px Arial",
                     fill: "#000000",
@@ -39,7 +39,7 @@ const gameConfig = {
 
                 if (numPaddles >= 2 && numPaddles <= 4) {
                     // If the user enters a valid number of paddles, start the game
-                    game.state.start("game", true, false, numPaddles);
+                    // this.state.start("game", true, false, numPaddles);
                 } else {
                     // If the user enters an invalid number of paddles, show an error message
                 }
@@ -97,15 +97,15 @@ const gameConfig = {
             }, this);
 
             // Check for collisions with the paddles or the sides of the field
-            game.physics.collide(this.ball, this.paddles, function(ball, paddle) {
+            this.physics.collide(this.ball, this.paddles, function(ball, paddle) {
                 // Reverse the ball's x velocity when it collides with a paddle
                 ball.body.velocity.x *= -1;
             });
-            if (this.ball.x < 0 || this.ball.x > game.width) {
+            if (this.ball.x < 0 || this.ball.x > this.width) {
                 // Reverse the ball's x velocity when it collides with a side of the field
                 this.ball.body.velocity.x *= -1;
             }
-            if (this.ball.y < 0 || this.ball.y > game.height) {
+            if (this.ball.y < 0 || this.ball.y > this.height) {
                 // Reverse the ball's y velocity when it collides with the top or bottom of the field
                 this.ball.body.velocity.y *= -1;
             }
