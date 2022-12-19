@@ -1,0 +1,3 @@
+Generate Phaser Javascript pong game with configurable number of paddles, configurable via a menu that allows specifying the number of paddles. Each paddle will be moving on side of geometrical shape with number of sides matching the number of paddles, for example for 3 paddles, each paddle can move on a side of a triangle. Each paddle's movement is controlled via configurable key on keyboard, so have the update function to integrate the control of paddles via keys. Implement paddles and ball via simple Graphics shapes.
+
+Also generate html code for loading that javascript file.
