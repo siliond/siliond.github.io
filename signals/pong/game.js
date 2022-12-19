@@ -13,12 +13,17 @@ const gameConfig = {
 
     scene: {
         create: function() {
+            // Set the background color
+            this.cameras.main.setBackgroundColor('#000');
+
             // Set up the keys for controlling the paddles
             this.cursors = {
                 up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
                 down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
             };
 
+            // Create a group to hold the paddles
+            this.paddles = this.add.group();
             let numPaddles = 3; // Configurable number of paddles
 
             // // Add a menu to allow the user to specify the number of paddles
