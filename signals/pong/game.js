@@ -3,8 +3,8 @@ const game = new Phaser.Game(800, 600, Phaser.CANVAS, "game-container");
 
 // Set up the keys for controlling the paddles
 const keys = game.input.keyboard.addKeys({
-    up: Phaser.KeyCode.W,
-    down: Phaser.KeyCode.S,
+    up: Phaser.Input.Keyboard.KeyCodes.W,
+    down: Phaser.Input.Keyboard.KeyCodes.S
 });
 
 // Set up the game state
