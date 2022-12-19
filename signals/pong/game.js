@@ -1,11 +1,6 @@
 // Set up the game
 const game = new Phaser.Game(800, 600, Phaser.CANVAS, "game-container");
 
-this.cursors = {
-    up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
-    down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
-};
-
 // Set up the game state
 const gameState = {
     create: function() {
