@@ -18,12 +18,14 @@ function createCopyToClipboard(text) {
     btn.innerText = "Copy";
 }
 
-window.onload = (event) => {
-    setTimeout(() => {
-        var values = valueExpressions.map((value) => eval(value));
+function copyOnLoad() {
+    window.onload = (event) => {
+        setTimeout(() => {
+            var values = valueExpressions.map((value) => eval(value));
 
-        createCopyToClipboard(values.join("\t"));
+            createCopyToClipboard(values.join("\t"));
 
-        var clipboard = new ClipboardJS('.copyButton');
-    }, 3000);
-};
+            var clipboard = new ClipboardJS('.copyButton');
+        }, 3000);
+    };
+}
