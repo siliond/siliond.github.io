@@ -22,7 +22,7 @@ function createCopyToClipboard(text) {
 
 function copyOnLoad() {
     setTimeout(() => {
-        var values = valueExpressions.map((value) => value());
+        var values = valueExpressions.map((value) => typeof(value) == 'function' ? value() : eval(value));
 
         createCopyToClipboard(values.join("\t"));
 
