@@ -1,8 +1,8 @@
 // Set up the game state
 const gameConfig = {
-    type: Phaser.CANVAS,
-    width: 800,
-    height: 600,
+    type: Phaser.AUTO,
+    width: 1600,
+    height: 900,
     parent: 'game-container',
     physics: {
         default: 'arcade',
@@ -52,24 +52,40 @@ const gameConfig = {
             // });
 
             // Create the paddles
-            const shapeRadius = 300; // The radius of the geometric shape on which the paddles will move
+            const shapeRadius = 400; // The radius of the geometric shape on which the paddles will move
             const paddleWidth = 20; // The width of the paddles
             const paddleHeight = 100; // The height of the paddles
             for (let i = 0; i < numPaddles; i++) {
                 // Calculate the x and y position of the paddle based on the number of sides and the radius of the shape
-                const x = shapeRadius * Math.cos(2 * Math.PI * i / numPaddles);
-                const y = shapeRadius * Math.sin(2 * Math.PI * i / numPaddles);
-                const paddle = this.add.rectangle(x, y, paddleWidth, paddleHeight, 0xffffff);
+                const x = game.canvas.width / 2 + shapeRadius * Math.cos(2 * Math.PI * i / numPaddles);
+                const y = game.canvas.height / 2 + shapeRadius * Math.sin(2 * Math.PI * i / numPaddles);
+                // const paddle = this.add.rectangle(x, y, paddleWidth, paddleHeight, 0xffffff);
+
+                const paddle = this.add.graphics();
+                // Set the fill color and draw the paddle as a rectangle
+                paddle.fillStyle(0xFFFFFF, 1);
+                paddle.fillRect(x, y, paddleWidth, paddleHeight);
+
+                // Set the stroke color and width, and draw the stroke around the paddle
+                paddle.lineStyle(2, 0x000000, 1);
+                paddle.strokeRect(x, y, paddleWidth, paddleHeight);
+
+                // Create a new Text object
+                const text = this.add.text(50, 105, 'S', { fontSize: '30px', fill: '#000000' });
+
+                this.physics.add.existing(paddle);
+                paddle.body.setCollideWorldBounds(true);
+
                 this.paddles.add(paddle);
             }
 
             // Set the paddles to be immovable
             this.physics.add.collider(this.paddles, this.ball, function(paddle, ball) {
-                ball.setVelocityX(-1 * ball.body.velocity.x);
+                ball.body.setVelocityX(-1 * ball.body.velocity.x);
             }, null, this);
 
             // Set the paddles to be controlled by the keyboard
-            this.cursors = this.input.keyboard.createCursorKeys();
+            // this.cursors = this.input.keyboard.wwcreateCursorKeys();
 
             // Create the ball
             this.ball = this.add.graphics();
@@ -78,12 +94,12 @@ const gameConfig = {
             this.physics.add.existing(this.ball); // Add the ball to the physics system
 
             // Set the ball's bouncing properties
-            this.ball.setBounce(1);
-            this.ball.setCollideWorldBounds(true);
+            this.ball.body.setBounce(1);
+            this.ball.body.setCollideWorldBounds(true);
 
             // Set the ball's velocity
-            this.ball.setVelocityX(200);
-            this.ball.setVelocityY(200);
+            this.ball.body.setVelocityX(200);
+            this.ball.body.setVelocityY(200);
         },
 
         update: function() {
@@ -103,10 +119,10 @@ const gameConfig = {
             }, this);
 
             // Check for collisions with the paddles or the sides of the field
-            this.physics.collide(this.ball, this.paddles, function(ball, paddle) {
-                // Reverse the ball's x velocity when it collides with a paddle
-                ball.body.velocity.x *= -1;
-            });
+            // this.physics.collide(this.ball, this.paddles, function(ball, paddle) {
+            //     // Reverse the ball's x velocity when it collides with a paddle
+            //     ball.body.velocity.x *= -1;
+            // });
             if (this.ball.x < 0 || this.ball.x > this.width) {
                 // Reverse the ball's x velocity when it collides with a side of the field
                 this.ball.body.velocity.x *= -1;

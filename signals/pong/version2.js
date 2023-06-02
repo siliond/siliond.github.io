@@ -66,3 +66,6 @@ function startGame() {
         switch (i) {
             case 0:
                 keyCode = Phaser.Input.Key
+        }
+    }
+}
