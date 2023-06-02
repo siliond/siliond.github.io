@@ -12,6 +12,7 @@ function createCopyToClipboard(text) {
     btn.style.position = 'absolute';
     btn.style.backgroundColor = 'lawngreen';
     btn.style.cursor = 'pointer';
+    btn.style.zIndex = '2147483647';
 
     btn.style.left = '10px';
     btn.style.top = '10px';
