@@ -22,11 +22,11 @@ function createCopyToClipboard(text) {
     }
 }
 
-function copyOnLoad() {
+function copyOnLoad(separator = "\t") {
     setTimeout(() => {
         var values = valueExpressions.map((value) => (typeof(value) == 'function' ? value() : eval(value)).trim());
 
-        createCopyToClipboard(values.join("\t").trim());
+        createCopyToClipboard(values.join(separator).trim());
 
         var clipboard = new ClipboardJS('.copyButton');
     }, 3000);
