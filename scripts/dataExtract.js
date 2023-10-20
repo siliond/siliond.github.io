@@ -24,7 +24,10 @@ function createCopyToClipboard(text) {
 
 function copyOnLoad(separator = "\t") {
     setTimeout(() => {
-        var values = valueExpressions.map((value) => (typeof(value) == 'function' ? value() : eval(value)).trim());
+        var values = valueExpressions.map((value) => {
+		  let result = typeof(value) == 'function' ? value() : eval(value);
+		  return typeof(result) === 'string' ? result.trim() : result;
+		});
 
         createCopyToClipboard(values.join(separator).trim());
 
