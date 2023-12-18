@@ -1,9 +1,4 @@
 function createCopyToClipboard(text) {
-    /* <button class="btn" data-clipboard-text="Just because you can doesn't mean you should — clipboard.js">
-    	Copy to clipboard
-		</button>
-	*/
-
     if (text) {
         const btn = document.createElement('button');
         btn.classList.add("copyButton");
@@ -18,19 +13,26 @@ function createCopyToClipboard(text) {
         btn.style.left = '10px';
         btn.style.top = '10px';
         document.body.appendChild(btn);
-        btn.innerText = "Copy";
+        btn.innerText = "Copy to Clipboard";
+        btn.addEventListener('click', function() {
+            if (window.ClipboardJS) {
+                var clipboard = new ClipboardJS('.copyButton');
+            } else {
+                console.log("ClipboardJS is not defined, copying to console instead.");
+                console.log(text);
+                btn.innerText = "To Console";
+            }
+        });
     }
 }
 
 function copyOnLoad(separator = "\t") {
     setTimeout(() => {
         var values = valueExpressions.map((value) => {
-		  let result = typeof(value) == 'function' ? value() : eval(value);
-		  return typeof(result) === 'string' ? result.trim() : result;
-		});
+            let result = typeof(value) == 'function' ? value() : eval(value);
+            return typeof(result) === 'string' ? result.trim() : result;
+        });
 
         createCopyToClipboard(values.join(separator).trim());
-
-        var clipboard = new ClipboardJS('.copyButton');
     }, 3000);
 }
